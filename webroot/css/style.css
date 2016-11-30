@@ -1,0 +1,39 @@
+body{
+    background: #000 url("../img/fon1.jpg") repeat;
+}
+.container{
+    background-color: #FDF5E6;
+    padding: 10px 50px;
+}
+header{
+    padding-top: 20px;
+}
+
+.slide{
+    width: 100%;
+    height: 400px;
+}
+.row{
+    padding-bottom: 20px;
+}
+h3{
+    margin-top: 0px;
+}
+.media-object{
+    width: 64px;
+    height: 64px;
+}
+.leftimg{
+    float:left; /* Выравнивание по левому краю */
+    margin: 7px 7px 7px 0; /* Отступы вокруг картинки */
+    border-radius: 50%;
+    width: 150px;
+}
+.rightimg{
+    float: right; /* Выравнивание по правому краю  */
+    margin: 7px 0 7px 7px; /* Отступы вокруг картинки */
+    border-radius: 50%;
+    width: 150px;
+}
+
+
