@@ -1,6 +1,29 @@
-<h1><?=$data['page']['title']?></h1>
-<?php
-print_r($data);
-?>
-<?=$data['page']['content']?>
+<h3><?=ucfirst($data['page'][0]['category'])?></h3>
 
+<div class="row">
+    <?php
+    $i = 0;
+    foreach($data['page'] as $page_data) { ?>
+        <?= ($i % 3 == 0 or $i == 0) ? '<div class="row">' : null?>
+
+        <div class="col-md-4">
+            <div class="thumbnail">
+                <img src="<?=$page_data['foto']?>" alt="Фото_<?=$page_data['id']?>"">
+                <div class="caption">
+                    <h3><?=ucfirst($page_data["category"])?> <?=$page_data['name']?></h3>
+                    <p>Размер: <?=$page_data['size']?> см</p>
+                    <p>Цена: <?=$page_data['price']?> грн</p>
+                    <p><?= ($page_data['is_available'] == 1) ? 'Есть в наличии' : 'Нет в наличии'?></p>
+                    <!--
+                    <p><a href="/admin/pages/edit/<?=$page_data['id']?>" class="btn btn-primary" role="button">Edit</a>
+                        <a href="/admin/pages/delete/<?=$page_data['id']?>" onclick="return confirmDelete();" class="btn btn-default" role="button">Delete</a></p>
+                        -->
+                </div>
+            </div>
+        </div>
+
+        <?php $i++;
+        echo ($i % 3 == 0) ? '</div>'. "\n" : null;
+        ?>
+    <?php } ?>
+</div>

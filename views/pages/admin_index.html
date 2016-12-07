@@ -1,18 +1,28 @@
 <h3>Pages</h3><br/>
-<table class="table table-striped" style="width: 400px;">
-<?php foreach($data['pages'] as $page_data) { ?>
-    <tr>
-        <td><b><?=$page_data['title']?></b></td>
-        <td align="right">
-            <a href="/admin/pages/edit/<?=$page_data['id']?>"><button class="btn btn-sm btn-primary">edit</button></a>
-            <a href="/admin/pages/delete/<?=$page_data['id']?>" onclick="return confirmDelete();"><button class="btn btn-sm btn-warning">delete</button></a>
-        </td>
-    </tr>
+
+<p><a href="/admin/pages/add/"><button class="btn btn-sm btn-success">New Product</button></a></p>
+
+<div class="row">
+<?php
+//todo: every 6 page_data add new <div class="row">
+$i = 0;
+foreach($data['pages'] as $page_data) { ?>
+    <?= ($i % 6 == 0 or $i == 0) ? '<div class="row">' : null?>
+    <div class="col-md-2">
+        <div class="thumbnail">
+            <img src="<?=$page_data['foto']?>" alt="Фото_<?=$page_data['id']?>">
+            <div class="caption">
+                <h4><?=ucfirst($page_data["category"])?> <?=$page_data['name']?></h4>
+                <p>Размер: <?=$page_data['size']?> см</p>
+                <p>Цена: <?=$page_data['price']?> грн</p>
+                <p><?= $text = ($page_data['is_available'] == 1) ? 'Есть в наличии' : 'Нет в наличии'?></p>
+                <a href="/admin/pages/edit/<?=$page_data['id']?>" class="btn btn-sm btn-primary" role="button"> Edit </a>
+                    <a href="/admin/pages/delete/<?=$page_data['id']?>" onclick="return confirmDelete();" class="btn btn-sm btn-warning" role="button">Delete</a>
+            </div>
+        </div>
+    </div>
+    <?php $i++;
+    echo ($i % 6 == 0) ? '</div>'. "\n" : null;
+    ?>
 <?php } ?>
-</table>
-
-<br/>
-
-<div>
-    <a href="/admin/pages/add/"><button class="btn btn-sm btn-success">New Page</button></a>
 </div>

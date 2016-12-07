@@ -14,7 +14,7 @@
     <!-- my css file -->
     <link rel="stylesheet" href="/webroot/css/style.css">
 </head>
-<body>
+<body class="default">
 <div class="container">
     <header>
         <div class="row">
@@ -28,10 +28,10 @@
     <nav class="navbar navbar-default">
 
         <ul class="nav navbar-nav">
-            <li><a href="/">Главная</a></li>
-             <li><a href="/delivery/">Доставка</a></li>
-            <li><a href="/about/">О нас</a></li>
-            <li><a href="/contacts/">Контакты</a></li>
+            <li ><a href="/">Главная</a></li>
+             <li <?php if( App::getRouter()->getController() == 'delivery' ) {?>class="active"<?php } ?>><a href="/delivery/">Доставка</a></li>
+            <li <?php if( App::getRouter()->getController() == 'about' ) {?>class="active"<?php } ?>><a href="/about/">О нас</a></li>
+            <li <?php if( App::getRouter()->getController() == 'contacts' ) {?>class="active"<?php } ?>><a href="/contacts/">Контакты</a></li>
         </ul>
 
             <form class="navbar-form navbar-right" role="search">
@@ -58,10 +58,10 @@
                 <div class="list-group">
                     <h3>Категории:</h3>
                     <a href="#" class="list-group-item active"><span class="badge">20</span>Хризантемы</a>
-                    <a href="#" class="list-group-item"><span class="badge">14</span>Розы</a>
+                    <a href="/pages/view/rose" class="list-group-item"><span class="badge">14</span>Розы</a>
                     <a href="#" class="list-group-item"><span class="badge">12</span>Лилии</a>
                     <a href="#" class="list-group-item"><span class="badge">10</span>Гвоздики</a>
-                    <a href="#" class="list-group-item"><span class="badge">6</span>Тюльпаны</a>
+                    <a href="/pages/view/tulip" class="list-group-item"><span class="badge">6</span>Тюльпаны</a>
                     <a href="#" class="list-group-item"><span class="badge">5</span>Орхидеи</a>
                 </div>
 

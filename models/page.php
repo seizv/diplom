@@ -2,56 +2,77 @@
 
 class Page extends Model{
 
-    public function getList($only_published = false){
-        $sql = "select * from pages where 1";
-        if ( $only_published ){
-            $sql .= " and is_published = 1";
-        }
+    public function getListCategory(){
+        $sql = "SELECT `category`, COUNT(*) FROM `flowers` GROUP BY `category`";
         return $this->db->query($sql);
     }
 
-    public function getByAlias($alias){
-        $alias = $this->db->escape($alias);
-        $sql = "select * from pages where alias = '{$alias}' limit 1";
+    public function getAll(){
+        $sql = "select * from flowers where 1";
+        return $this->db->query($sql);
+    }
+
+    public function getByCategory($category){
+        $category = $this->db->escape($category);
+        $sql = "select * from flowers where category = '{$category}' ";
         $result = $this->db->query($sql);
-        return isset($result[0]) ? $result[0] : null;
+        return isset($result[0]) ? $result : null;
     }
 
     public function getById($id){
         $id = (int)$id;
-        $sql = "select * from pages where id = '{$id}' limit 1";
+        $sql = "select * from flowers where id = '{$id}' limit 1";
         $result = $this->db->query($sql);
         return isset($result[0]) ? $result[0] : null;
     }
 
-    public function save($data, $id = null){
-        if ( !isset($data['alias']) || !isset($data['title']) || !isset($data['content']) ){
+    public function save($data, $upload_file, $id = null){
+        if ( !isset($data['category']) || !isset($data['name']) || !isset($upload_file) ){
             return false;
         }
 
         $id = (int)$id;
-        $alias = $this->db->escape($data['alias']);
-        $title = $this->db->escape($data['title']);
-        $content = $this->db->escape($data['content']);
-        $is_published = isset($data['is_published']) ? 1 : 0;
+        $category = $this->db->escape($data['category']);
+        $name = $this->db->escape($data['name']);
+        $price = $this->db->escape($data['price']);
+        $size = $this->db->escape($data['size']);
+        $is_available = isset($data['is_available']) ? 1 : 0;
+        $foto = $upload_file;
 
         if ( !$id ){ // Add new record
             $sql = "
-                insert into pages
-                   set alias = '{$alias}',
-                       title = '{$title}',
-                       content = '{$content}',
-                       is_published = {$is_published}
+                insert into flowers
+                   set category = '{$category}',
+                       name = '{$name}',
+                       price = '{$price}',
+                       size = '{$size}',
+                       is_available = {$is_available},
+                       foto = '{$foto}'
             ";
         } else { // Update existing record
+            if ($foto){ // if photo changed
             $sql = "
-                update pages
-                   set alias = '{$alias}',
-                       title = '{$title}',
-                       content = '{$content}',
-                       is_published = {$is_published}
+                update flowers
+                   set category = '{$category}',
+                       name = '{$name}',
+                       price = '{$price}',
+                       size = '{$size}',
+                       is_available = {$is_available},
+                       foto = '{$foto}'
                    where id = {$id}
             ";
+            } else { // if photo don't changed
+                $sql = "
+                update flowers
+                   set category = '{$category}',
+                       name = '{$name}',
+                       price = '{$price}',
+                       size = '{$size}',
+                       is_available = {$is_available}
+                   where id = {$id}
+            ";
+            }
+
         }
 
         return $this->db->query($sql);
@@ -59,7 +80,7 @@ class Page extends Model{
 
     public function delete($id){
         $id = (int)$id;
-        $sql = "delete from pages where id = {$id}";
+        $sql = "delete from flowers where id = {$id}";
         return $this->db->query($sql);
     }
 

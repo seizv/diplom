@@ -1,5 +1,5 @@
-CREATE DATABASE  IF NOT EXISTS `mvc` /*!40100 DEFAULT CHARACTER SET latin1 */;
-USE `mvc`;
+CREATE DATABASE  IF NOT EXISTS `seiz` /*!40100 DEFAULT CHARACTER SET latin1 */;
+USE `seiz`;
 -- MySQL dump 10.13  Distrib 5.6.13, for Win32 (x86)
 --
 -- Host: 127.0.0.1    Database: mvc

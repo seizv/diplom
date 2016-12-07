@@ -8,31 +8,40 @@ class PagesController extends Controller{
     }
 
     public function index(){
-        $this->data['pages'] = $this->model->getList();
+        $this->data['pages'] = $this->model->getListCategory();
     }
 
     public function view(){
         $params = App::getRouter()->getParams();
 
         if ( isset($params[0]) ){
-            $alias = strtolower($params[0]);
-            $this->data['page'] = $this->model->getByAlias($alias);
+            $category = strtolower($params[0]);
+            $this->data['page'] = $this->model->getByCategory($category);
         }
     }
 
     public function admin_index(){
-        $this->data['pages'] = $this->model->getList();
+        $this->data['pages'] = $this->model->getAll();
     }
 
     public function admin_add(){
         if ( $_POST ){
-            $result = $this->model->save($_POST);
-            if ( $result ){
-                Session::setFlash('Page was saved.');
-            } else {
-                Session::setFlash('Error.');
+            if ($_FILES['file']['name']) {
+                $name = explode('.', basename($_FILES['file']['name']));
+                $new_name = md5($name[0] . Config::get('salt'));
+                $upload_file = DS.Config::get('upload_dir') . $new_name . '.' . array_pop($name);
+                move_uploaded_file($_FILES["file"]["tmp_name"], ROOT.$upload_file);
+                if ($_POST['category'] && $_POST['name']){
+                    $result = $this->model->save($_POST, $upload_file);
+                    if ( $result ){
+                        Session::setFlash('Page was saved.');
+                    } else {
+                        Session::setFlash('Error.');
+                    }
+                    Router::redirect('/admin/pages/');
+                }
             }
-            Router::redirect('/admin/pages/');
+
         }
     }
 
@@ -40,7 +49,15 @@ class PagesController extends Controller{
 
         if ( $_POST ){
             $id = isset($_POST['id']) ? $_POST['id'] : null;
-            $result = $this->model->save($_POST, $id);
+            if ($_FILES['file']['name']) {
+                $name = explode('.', basename($_FILES['file']['name']));
+                $new_name = md5($name[0] . Config::get('salt'));
+                $upload_file = DS . Config::get('upload_dir') . $new_name . '.' . array_pop($name);
+                move_uploaded_file($_FILES["file"]["tmp_name"], ROOT . $upload_file);
+                $result = $this->model->save($_POST, $upload_file, $id);
+            } else {
+                $result = $this->model->save($_POST, false, $id);
+            }
             if ( $result ){
                 Session::setFlash('Page was saved.');
             } else {

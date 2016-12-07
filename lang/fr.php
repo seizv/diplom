@@ -1,6 +1,6 @@
 <?php
 
 return array(
-    'lng.test' => 'Exemple de texte',
+    'lng.test' => 'РОза',
     'lng.test2' => 'Exemple de texte2',
 );

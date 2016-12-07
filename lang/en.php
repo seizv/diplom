@@ -1,5 +1,5 @@
 <?php
 
 return array(
-    'lng.test' => 'Sample text',
+    'lng.test' => 'rose',
 );
