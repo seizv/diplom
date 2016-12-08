@@ -1,0 +1,10 @@
+<?php
+$rez = new Page();
+$rez1 = $rez->getListCategory();
+?>
+<div class="list-group">
+  <h3>Категории:</h3>
+  <?php foreach ($rez1 as $item){ ?>
+    <a href="/pages/view/<?=$item['category']?>#сontent-start" class="list-group-item list-group-item-warning <?php if( App::getRouter()->getUri() == 'pages/view/'. $item['category'] ) {?>active<?php }?>"><span class="badge"><?=$item['count']?></span><?=mb_ucfirst($item['category'])?></a>
+  <?php } ?>
+</div>

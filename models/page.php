@@ -3,7 +3,7 @@
 class Page extends Model{
 
     public function getListCategory(){
-        $sql = "SELECT `category`, COUNT(*) FROM `flowers` GROUP BY `category`";
+        $sql = "SELECT `category`, COUNT(*) as `count` FROM `flowers` GROUP BY `category`";
         return $this->db->query($sql);
     }
 
@@ -12,9 +12,14 @@ class Page extends Model{
         return $this->db->query($sql);
     }
 
+    public function getLastThreeId(){
+        $sql = "SELECT * FROM `flowers` ORDER BY `flowers`.`id`  DESC LIMIT 3";
+        return $this->db->query($sql);
+    }
+
     public function getByCategory($category){
         $category = $this->db->escape($category);
-        $sql = "select * from flowers where category = '{$category}' ";
+        $sql = "select * from flowers where category = '{$category}' ORDER BY `flowers`.`id`  DESC ";
         $result = $this->db->query($sql);
         return isset($result[0]) ? $result : null;
     }

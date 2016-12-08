@@ -1,5 +1,6 @@
 <?php
 
+
 class PagesController extends Controller{
 
     public function __construct($data = array()){
@@ -7,8 +8,12 @@ class PagesController extends Controller{
         $this->model = new Page();
     }
 
-    public function index(){
+    public function sidebar1(){
         $this->data['pages'] = $this->model->getListCategory();
+    }
+
+    public function index(){
+        $this->data['count'] = $this->model->getListCategory();
     }
 
     public function view(){

@@ -21,7 +21,12 @@
             <div class="col-md-6">
             <a href="/"><img src="/webroot/img/logo.png" alt="Лого"></a>
             </div>
-            <div class="col-md-6" align="right">Контактная информация</div>
+            <div class="col-md-6" align="right">THE COMPANY NAME
+                <br>8901 Marmora Road,
+                <br>Glasgow, D04 89GR.
+                <br>Telephone:+1 959 603 6035
+                <br>E-mail: mail@demolink.org
+            </div>
         </div>
     </header>
 
@@ -34,6 +39,7 @@
             <li <?php if( App::getRouter()->getController() == 'contacts' ) {?>class="active"<?php } ?>><a href="/contacts/">Контакты</a></li>
         </ul>
 
+            <!--
             <form class="navbar-form navbar-right" role="search">
                 <div class="input-group">
                     <input type="text" class="form-control" placeholder="Search" name="q">
@@ -42,67 +48,33 @@
                     </div>
                 </div>
             </form>
+            -->
 
     </nav>
-
 
     <div class="content">
         <div class="row">
             <div class="col-md-4 text-center"><img src="/webroot/img/slide1.png" alt="фото 1" class="slide"></a></div>
             <div class="col-md-4 text-center"><img src="/webroot/img/slide2.png" alt="фото 2" class="slide"></a></div>
             <div class="col-md-4 text-center"><img src="/webroot/img/slide3.png" alt="фото 3" class="slide"></a></div>
+            <p><a name="сontent-start"></a></p>
         </div>
         <div class="row">
             <div class="col-md-3">
 
-                <div class="list-group">
-                    <h3>Категории:</h3>
-                    <a href="#" class="list-group-item active"><span class="badge">20</span>Хризантемы</a>
-                    <a href="/pages/view/rose" class="list-group-item"><span class="badge">14</span>Розы</a>
-                    <a href="#" class="list-group-item"><span class="badge">12</span>Лилии</a>
-                    <a href="#" class="list-group-item"><span class="badge">10</span>Гвоздики</a>
-                    <a href="/pages/view/tulip" class="list-group-item"><span class="badge">6</span>Тюльпаны</a>
-                    <a href="#" class="list-group-item"><span class="badge">5</span>Орхидеи</a>
+                <div class="blok1">
+                    <?php include_once(PAGES_PATH."/sidebar1.html"); ?>
                 </div>
 
                 <div class="blok2">
-                    <h3>Топ продаж:</h3>
-                    <div class="media">
-                        <div class="media-left">
-                            <a href="#">
-                                <img class="media-object" src="/webroot/img/slide2.png" alt="...">
-                            </a>
-                        </div>
-                        <div class="media-body">
-                            <h4 class="media-heading">Media heading</h4>
-                            Хороший и красивый букет
-                        </div>
-                    </div>
-                    <div class="media">
-                        <div class="media-left">
-                            <a href="#">
-                                <img class="media-object" src="/webroot/img/slide2.png" alt="...">
-                            </a>
-                        </div>
-                        <div class="media-body">
-                            <h4 class="media-heading">Media heading</h4>
-                            Хороший и красивый букет
-                        </div>
-                    </div>
-                    <div class="media">
-                        <div class="media-left">
-                            <a href="#">
-                                <img class="media-object" src="/webroot/img/slide2.png" alt="...">
-                            </a>
-                        </div>
-                        <div class="media-body">
-                            <h4 class="media-heading">Media heading</h4>
-                            Хороший и красивый букет
-                        </div>
-                    </div>
+                   <?php include_once(PAGES_PATH."/sidebar2.html"); ?>
                 </div>
 
-                <!--<div>3 блок</div>-->
+                <div class="blok3">
+                    <?php include_once(VIEWS_PATH."/users/admin_login.html"); ?>
+                </div>
+
+
 
             </div>
             <div class="col-md-9 center-content">
@@ -115,13 +87,17 @@
                     <?php } ?>
 
                     <?=$data['content']?>
+
+
                 </div>
             </div>
         </div>
 
     </div>
     <footer class="text-center">
-        COPYRIGHT © 2016 FLOWER. ALL RIGHTS RESERVED.
+        <hr>
+        COPYRIGHT &copy; 2016 SEIZ.PP.UA ALL RIGHTS RESERVED.
+        <hr>
     </footer>
 
 </div>

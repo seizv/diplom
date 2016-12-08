@@ -1,4 +1,4 @@
-<h3><?=ucfirst($data['page'][0]['category'])?></h3>
+<h3 xmlns="http://www.w3.org/1999/html"><?=ucfirst($data['page'][0]['category'])?></h3>
 
 <div class="row">
     <?php
@@ -8,9 +8,9 @@
 
         <div class="col-md-4">
             <div class="thumbnail">
-                <img src="<?=$page_data['foto']?>" alt="Фото_<?=$page_data['id']?>"">
+                <img src="<?=$page_data['foto']?>" alt="Фото_<?=$page_data['id']?>" width="300px" height="374px">
                 <div class="caption">
-                    <h3><?=ucfirst($page_data["category"])?> <?=$page_data['name']?></h3>
+                    <h3><?=mb_ucfirst($page_data["category"])?> <?=mb_ucfirst($page_data['name'])?></h3>
                     <p>Размер: <?=$page_data['size']?> см</p>
                     <p>Цена: <?=$page_data['price']?> грн</p>
                     <p><?= ($page_data['is_available'] == 1) ? 'Есть в наличии' : 'Нет в наличии'?></p>
