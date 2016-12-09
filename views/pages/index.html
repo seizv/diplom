@@ -1,98 +1,21 @@
-
 <div class="row">
-    <div class="col-md-4">
+    <?php
+    $i = 0;
+    foreach($data['flower'] as $page_data) { ?>
+        <?= ($i % 3 == 0 or $i == 0) ? '<div class="row">' : null?>
 
-        <div class="thumbnail">
-            <img src="/webroot/img/slide5.png" alt="...">
-            <div class="caption">
-                <h3>Роза марки The best</h3>
-                <p>Цена: договорная</p>
-                <!--<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>-->
+        <div class="col-md-4">
+            <div class="thumbnail">
+                <a href="/<?= App::getRouter()->getLanguage()?>/pages/view/<?=$page_data['category']?>"> <img src="<?=$page_data['foto']?>" alt="Photo_<?=$page_data['category']?>" width="300px" height="374px">
+                <div class="caption">
+                    <h3 class="text-center"><?=mb_ucfirst(__($page_data['category'], $page_data['category']))?> </h3>
+                </a>
+                </div>
             </div>
         </div>
 
-    </div>
-    <div class="col-md-4">
-        <div class="thumbnail">
-            <img src="/webroot/img/slide5.png" alt="...">
-            <div class="caption">
-                <h3>Роза марки The best</h3>
-                <p>Цена: договорная</p>
-                <!--<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>-->
-            </div>
-        </div>
-    </div>
-    <div class="col-md-4">
-        <div class="thumbnail">
-            <img src="/webroot/img/slide5.png" alt="...">
-            <div class="caption">
-                <h3>Роза марки The best</h3>
-                <p>Цена: договорная</p>
-                <!--<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>-->
-            </div>
-        </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-4">
-        <div class="thumbnail">
-            <img src="/webroot/img/slide5.png" alt="...">
-            <div class="caption">
-                <h3>Роза марки The best</h3>
-                <p>Цена: договорная</p>
-                <!--<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>-->
-            </div>
-        </div>
-    </div>
-    <div class="col-md-4">
-        <div class="thumbnail">
-            <img src="/webroot/img/slide5.png" alt="...">
-            <div class="caption">
-                <h3>Роза марки The best of the best</h3>
-                <p>Цена: договорная</p>
-                <!--<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>-->
-            </div>
-        </div>
-    </div>
-    <div class="col-md-4">
-        <div class="thumbnail">
-            <img src="/webroot/img/slide6.jpg" alt="...">
-            <div class="caption">
-                <h3>Роза марки The best</h3>
-                <p>Цена: договорная</p>
-                <!--<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>-->
-            </div>
-        </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-4"><div class="thumbnail">
-        <img src="/webroot/img/slide4.jpg" alt="...">
-        <div class="caption">
-            <h3>Роза марки The best</h3>
-            <p>Цена: договорная</p>
-            <!--<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>-->
-        </div>
-    </div>
-    </div>
-    <div class="col-md-4">
-        <div class="thumbnail">
-            <img src="/webroot/img/slide5.png" alt="...">
-            <div class="caption">
-                <h3>Роза марки The best</h3>
-                <p>Цена: договорная</p>
-                <!--<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>-->
-            </div>
-        </div>
-    </div>
-    <div class="col-md-4">
-        <div class="thumbnail">
-            <img src="/webroot/img/slide5.png" alt="...">
-            <div class="caption">
-                <h3>Роза марки The best</h3>
-                <p>Цена: договорная</p>
-                <!--<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>-->
-            </div>
-        </div>
-    </div>
+        <?php $i++;
+        echo ($i % 3 == 0) ? '</div>'. "\n" : null;
+        ?>
+    <?php } ?>
 </div>

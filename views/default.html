@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title><?=Config::get('site_name')?></title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
@@ -13,13 +14,16 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <!-- my css file -->
     <link rel="stylesheet" href="/webroot/css/style.css">
+
 </head>
 <body class="default">
 <div class="container">
+
+
     <header>
         <div class="row">
             <div class="col-md-6">
-            <a href="/"><img src="/webroot/img/logo.png" alt="Лого"></a>
+            <a href="/<?= App::getRouter()->getLanguage()?>/"><img src="/webroot/img/logo.png" alt="Лого"></a>
             </div>
             <div class="col-md-6" align="right">THE COMPANY NAME
                 <br>8901 Marmora Road,
@@ -33,11 +37,22 @@
     <nav class="navbar navbar-default">
 
         <ul class="nav navbar-nav">
-            <li ><a href="/">Главная</a></li>
-             <li <?php if( App::getRouter()->getController() == 'delivery' ) {?>class="active"<?php } ?>><a href="/delivery/">Доставка</a></li>
-            <li <?php if( App::getRouter()->getController() == 'about' ) {?>class="active"<?php } ?>><a href="/about/">О нас</a></li>
-            <li <?php if( App::getRouter()->getController() == 'contacts' ) {?>class="active"<?php } ?>><a href="/contacts/">Контакты</a></li>
+            <li ><a href="/<?= App::getRouter()->getLanguage()?>/"><?=mb_ucfirst(__('main', 'main'))?></a></li>
+             <li <?php if( App::getRouter()->getController() == 'delivery' ) {?>class="active"<?php } ?>><a href="/<?= App::getRouter()->getLanguage()?>/delivery/"><?=mb_ucfirst(__('delivery', 'delivery'))?></a></li>
+            <li <?php if( App::getRouter()->getController() == 'about' ) {?>class="active"<?php } ?>><a href="/<?= App::getRouter()->getLanguage()?>/about/"><?=mb_ucfirst(__('about', 'about'))?></a></li>
+            <li <?php if( App::getRouter()->getController() == 'contacts' ) {?>class="active"<?php } ?>><a href="/<?= App::getRouter()->getLanguage()?>/contacts/"><?=mb_ucfirst(__('contacts', 'contacts'))?></a></li>
         </ul>
+
+        <!-- Small button group -->
+        <div class="btn-group navbar-form navbar-right">
+            <button class="btn btn-info btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true">
+                <?=mb_ucfirst(__('choose your language','choose your language'))?> <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+                <li><a href="/ru/"><?=mb_ucfirst(__('russian','russian'))?></a></li>
+                <li><a href="/en/"><?=mb_ucfirst(__('english','english'))?></a></li>
+            </ul>
+        </div>
 
             <!--
             <form class="navbar-form navbar-right" role="search">
@@ -53,11 +68,10 @@
     </nav>
 
     <div class="content">
-        <div class="row">
+        <div class="row <?php if( App::getRouter()->getAction() != 'index' ) {?>hidden<?php }?>"">
             <div class="col-md-4 text-center"><img src="/webroot/img/slide1.png" alt="фото 1" class="slide"></a></div>
             <div class="col-md-4 text-center"><img src="/webroot/img/slide2.png" alt="фото 2" class="slide"></a></div>
             <div class="col-md-4 text-center"><img src="/webroot/img/slide3.png" alt="фото 3" class="slide"></a></div>
-            <p><a name="сontent-start"></a></p>
         </div>
         <div class="row">
             <div class="col-md-3">
@@ -73,8 +87,6 @@
                 <div class="blok3">
                     <?php include_once(VIEWS_PATH."/users/admin_login.html"); ?>
                 </div>
-
-
 
             </div>
             <div class="col-md-9 center-content">

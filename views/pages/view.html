@@ -1,4 +1,4 @@
-<h3 xmlns="http://www.w3.org/1999/html"><?=ucfirst($data['page'][0]['category'])?></h3>
+<h3><?=mb_ucfirst(__($data['page'][0]['category'], $data['page'][0]['category']))?></h3>
 
 <div class="row">
     <?php
@@ -8,12 +8,12 @@
 
         <div class="col-md-4">
             <div class="thumbnail">
-                <img src="<?=$page_data['foto']?>" alt="Фото_<?=$page_data['id']?>" width="300px" height="374px">
+                <img src="<?=$page_data['foto']?>" alt="Photo_<?=$page_data['id']?>" width="300px" height="374px">
                 <div class="caption">
-                    <h3><?=mb_ucfirst($page_data["category"])?> <?=mb_ucfirst($page_data['name'])?></h3>
-                    <p>Размер: <?=$page_data['size']?> см</p>
-                    <p>Цена: <?=$page_data['price']?> грн</p>
-                    <p><?= ($page_data['is_available'] == 1) ? 'Есть в наличии' : 'Нет в наличии'?></p>
+                    <h3><?=mb_ucfirst(__($page_data['category'], $page_data['category']))?> <br> <?=mb_ucfirst($page_data['name'])?></h3>
+                    <p><?=mb_ucfirst(__('size','size'))?>: <?=$page_data['size']?> <?=__('cm','cm')?></p>
+                    <p><?=mb_ucfirst(__('price','price'))?>: <?=$page_data['price']?> <?=__('uah','uah')?></p>
+                    <p><?= ($page_data['is_available'] == 1) ? mb_ucfirst(__('available','available')) : mb_ucfirst(__('not available','not available'))?></p>
                     <!--
                     <p><a href="/admin/pages/edit/<?=$page_data['id']?>" class="btn btn-primary" role="button">Edit</a>
                         <a href="/admin/pages/delete/<?=$page_data['id']?>" onclick="return confirmDelete();" class="btn btn-default" role="button">Delete</a></p>

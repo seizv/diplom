@@ -2,7 +2,7 @@
 
 Config::set('site_name', 'Цветочный магазин');
 
-Config::set('languages', array('en', 'fr'));
+Config::set('languages', array('en', 'fr', 'ru'));
 
 Config::set('upload_dir', 'webroot' . DS.'uploads'.DS);
 
@@ -19,7 +19,9 @@ Config::set('default_action', 'index');
 /*
 Config::set('db.host', 'mysql.zzz.com.ua');
 */
+
 Config::set('db.host', 'localhost');
+
 Config::set('db.user', 'seiz');
 Config::set('db.password', 'rhtvtyxeu');
 Config::set('db.db_name', 'seiz');

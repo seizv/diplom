@@ -2,8 +2,13 @@
 
 class Page extends Model{
 
-    public function getListCategory(){
+    public function getListCategoryCount(){
         $sql = "SELECT `category`, COUNT(*) as `count` FROM `flowers` GROUP BY `category`";
+        return $this->db->query($sql);
+    }
+
+    public function getListCategoryFoto(){
+        $sql = "SELECT `category`, `foto` FROM `flowers` GROUP BY `category`";
         return $this->db->query($sql);
     }
 

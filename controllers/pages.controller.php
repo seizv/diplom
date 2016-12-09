@@ -8,12 +8,8 @@ class PagesController extends Controller{
         $this->model = new Page();
     }
 
-    public function sidebar1(){
-        $this->data['pages'] = $this->model->getListCategory();
-    }
-
     public function index(){
-        $this->data['count'] = $this->model->getListCategory();
+        $this->data['flower'] = $this->model->getListCategoryFoto();
     }
 
     public function view(){
@@ -39,11 +35,10 @@ class PagesController extends Controller{
                 if ($_POST['category'] && $_POST['name']){
                     $result = $this->model->save($_POST, $upload_file);
                     if ( $result ){
-                        Session::setFlash('Page was saved.');
+                        Session::setFlash('Product was added.');
                     } else {
                         Session::setFlash('Error.');
                     }
-                    Router::redirect('/admin/pages/');
                 }
             }
 
@@ -64,7 +59,7 @@ class PagesController extends Controller{
                 $result = $this->model->save($_POST, false, $id);
             }
             if ( $result ){
-                Session::setFlash('Page was saved.');
+                Session::setFlash('Product was edited.');
             } else {
                 Session::setFlash('Error.');
             }
@@ -75,7 +70,7 @@ class PagesController extends Controller{
             $this->data['page'] = $this->model->getById($this->params[0]);
         } else {
             Session::setFlash('Wrong page id.');
-            Router::redirect('/admin/pages/');
+            //Router::redirect('/admin/pages/');
         }
     }
 

@@ -1,5 +1,6 @@
 <?php
 
 return array(
-    'lng.test' => 'rose',
+    'rose' => 'rose',
+    'carnation' => 'carnation'
 );

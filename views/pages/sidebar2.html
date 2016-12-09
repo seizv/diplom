@@ -3,18 +3,17 @@ $rez = new Page();
 $rez1 = $rez->getLastThreeId();
 ?>
 
-<h3>Последние поступления:</h3>
+<h3><?=mb_ucfirst(__('the latest', 'the latest'))?>:</h3>
 <?php foreach ($rez1 as $item){ ?>
 <div class="media">
   <div class="media-left">
-    <a href="/pages/view/<?=$item['category']?>">
+    <a href="/<?= App::getRouter()->getLanguage()?>/pages/view/<?=$item['category']?>">
       <img class="media-object" src="<?=$item['foto']?>" alt="Photo_<?=$item['id']?>">
     </a>
   </div>
   <div class="media-body">
-    <h4 class="media-heading"><?=mb_ucfirst($item['category'])?> <?=mb_ucfirst($item['name'])?></h4>
-    Размер: <?=$item['size']?> см<br>
-    Цена: <?=$item['price']?> грн
+    <h4 class="media-heading"><?=mb_ucfirst(__($item['category'], $item['category']))?> <br><?=mb_ucfirst($item['name'])?></h4>
+    <?=mb_ucfirst(__('price','price'))?>: <?=$item['price']?> <?=__('uah','uah')?>
   </div>
 </div>
 <?php } ?>
