@@ -1,0 +1,7 @@
+create category_add
+create table (id, category)
+create select in admin_page
+page rename to flower
+проверка <script>
+
+clear table
