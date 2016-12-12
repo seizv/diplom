@@ -1,7 +1,12 @@
+TODO:
+create ENV logics
+create 404 page
+create all hints (php and js)
+
+fixed:
 create category_add
 create table (id, category)
-create select in admin_page
+create select in admin_page_add and admin_page_edit
 page rename to flower
 проверка <script>
-
 clear table

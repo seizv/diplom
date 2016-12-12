@@ -1,0 +1,30 @@
+<h3>Category Page</h3><br/>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <ul><h4><b>All created category:</b></h4>
+            <?php foreach ($data['flower'] as $item) {?>
+                <li><?=mb_ucfirst(__($item['category_name'],$item['category_name']))?></li>
+            <?php } ?>
+            </ul>
+        </div>
+        <div class="col-md-8">
+            <h4><b>Create new category:</b></h4>
+            <form method="post" action="">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" name="name" value="" class="form-control" placeholder="rose"/>
+                </div>
+
+                <div class="form-group hidden">
+                    <label for="price">Russian name</label>
+                    <input type="text" name="rus_name" value="" class="form-control" placeholder="роза"/>
+                </div>
+
+                <input type="submit" class="btn btn-success" value="Create new category"/>
+
+            </form>
+
+        </div>
+    </div>
+</div>

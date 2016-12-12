@@ -20,7 +20,8 @@ class DB{
         $result = $this->connection->query($sql);
 
         if ( mysqli_error($this->connection) ){
-            throw new Exception(mysqli_error($this->connection));
+            return false;
+            //throw new Exception(mysqli_error($this->connection));
         }
 
         if ( is_bool($result) ){
@@ -35,7 +36,7 @@ class DB{
     }
 
     public function escape($str){
-        $tag = array('<','>',';','/','\\');
+        $tag = array('<','>',';','/','\\','&lt','&#60','&gt','&#62');
         $str = str_replace($tag, "", $str);
         return mysqli_escape_string($this->connection, $str);
     }

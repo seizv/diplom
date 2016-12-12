@@ -1,11 +1,19 @@
 
-<p><a href="/admin/pages/add/"><button class="btn btn-sm btn-success">New Product</button></a></p>
+<div class="btn-group">
+<p><a href="/admin/pages/add/"><button class="btn btn-sm btn-success">New Product</button></a>
+    <a href="/admin/pages/category_add/"><button class="btn btn-sm btn-info">New Category</button></a>
+    <a href="/admin/pages/delete_category/"><button class="btn btn-sm btn-danger">Delete Category</button></a>
+</p>
+
+</div>
+
+
 
 <div class="row">
 <?php
 //todo: every 6 page_data add new <div class="row">
 $i = 0;
-foreach($data['pages'] as $page_data) { ?>
+foreach($data['flower'] as $page_data) { ?>
     <?= ($i % 6 == 0 or $i == 0) ? '<div class="row">' : null?>
     <div class="col-md-2">
         <div class="thumbnail">

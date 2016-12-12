@@ -1,8 +1,14 @@
-<h3>Add page</h3><br/>
+<h3>Add Product</h3><br/>
 <form method="post" action="" enctype="multipart/form-data">
     <div class="form-group">
-        <label for="category">Category</label>
-        <input type="text" id="category" name="category" value="" class="form-control" placeholder="Rose"/>
+        <p><b>Choose category:</b></p>
+        <select name="id_category">
+            <?php foreach ($data['flower'] as $item) {?>
+                <option value="<?= $item['id_category'] ?>"><?=mb_ucfirst(__($item['category_name'],$item['category_name']))?></option>
+            <?php } ?>
+
+        </select>
+        </div>
     </div>
     <div class="form-group">
         <label for="name">Name</label>

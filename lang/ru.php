@@ -1,6 +1,6 @@
 <?php
 
-return array(
+$ru_dictionary =  array(
     'delivery' => 'доставка',
     'about' => 'о нас',
     'contacts' => 'контакты',
@@ -17,7 +17,6 @@ return array(
     'english' => 'английский',
     'ukrainian' => 'украинский',
 
-
     'rose' => 'роза',
     'carnation' => 'гвоздика',
     'lily' => 'лилия',
@@ -27,3 +26,5 @@ return array(
     'available' => 'в наличии',
     'not available' => 'нет в наличии',
 );
+
+return $ru_dictionary;

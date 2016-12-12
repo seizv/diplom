@@ -1,9 +1,9 @@
-<h3><?=mb_ucfirst(__($data['page'][0]['category'], $data['page'][0]['category']))?></h3>
+<h3><?=mb_ucfirst(__($data['flower'][0]['category'], $data['flower'][0]['category']))?></h3>
 
 <div class="row">
     <?php
     $i = 0;
-    foreach($data['page'] as $page_data) { ?>
+    foreach($data['flower'] as $page_data) { ?>
         <?= ($i % 3 == 0 or $i == 0) ? '<div class="row">' : null?>
 
         <div class="col-md-4">

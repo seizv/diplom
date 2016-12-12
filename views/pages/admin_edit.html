@@ -3,22 +3,27 @@
 
     <div class="col-md-8">
         <form method="post" action="" enctype="multipart/form-data">
-            <input type="hidden" name="id" value="<?=$data['page']['id']?>" />
+            <input type="hidden" name="id" value="<?=$data['flower']['id']?>" />
             <div class="form-group">
-                <label for="category">Category</label>
-                <input type="text" id="category" name="category" value="<?=$data['page']['category']?>" class="form-control" placeholder="Rose"/>
+                <p><b>Choose category:</b></p>
+                <select name="id_category">
+                    <?php foreach ($data['flower_name'] as $item) {?>
+                        <option <?php if ($item['id_category'] == $data['flower']['id_category']) {?> selected <?php } ?>
+                                value="<?= $item['id_category'] ?>"><?=mb_ucfirst(__($item['category_name'],$item['category_name']))?></option>
+                    <?php } ?>
+                </select>
             </div>
             <div class="form-group">
                 <label for="name">Name</label>
-                <input type="text" id="name" name="name" value="<?=$data['page']['name']?>" class="form-control" placeholder="Black Moon"/>
+                <input type="text" id="name" name="name" value="<?=$data['flower']['name']?>" class="form-control" placeholder="Black Moon"/>
             </div>
             <div class="form-group">
                 <label for="price">Price</label>
-                <input type="text" id="price" name="price" value="<?=$data['page']['price']?>" class="form-control" placeholder="126"/>
+                <input type="text" id="price" name="price" value="<?=$data['flower']['price']?>" class="form-control" placeholder="126"/>
             </div>
             <div class="form-group">
                 <label for="size">Size</label>
-                <input type="text" id="size" name="size" value="<?=$data['page']['size']?>" class="form-control" placeholder="80"/>
+                <input type="text" id="size" name="size" value="<?=$data['flower']['size']?>" class="form-control" placeholder="80"/>
             </div>
             <div class="form-group">
                 <label for="file">Upload image</label>
@@ -26,7 +31,7 @@
             </div>
             <div class="form-group">
                 <label for="is_published">Available? (В наличии?)</label>
-                <input type="checkbox" name="is_available" id="is_available" <?php if( $data['page']['is_available'] ) { ?>checked="checked" <?php } ?>/>
+                <input type="checkbox" name="is_available" id="is_available" <?php if( $data['flower']['is_available'] ) { ?>checked="checked" <?php } ?>/>
             </div>
             <input type="submit" class="btn btn-success" />
 
@@ -34,7 +39,7 @@
         </div>
     <div class="col-md-4">
         <label for="file">
-        <img src="<?=$data['page']['foto']?>">
+        <img src="<?=$data['flower']['foto']?>" width="300px">
     </div>
 </div>
 
