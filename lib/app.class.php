@@ -38,6 +38,10 @@ class App{
             $view_object = new View($controller_object->getData(), $view_path);
             $content = $view_object->render();
         } else {
+            if (ENV == 'production'){
+                include_once("404.html");
+                exit;
+            }
             throw new Exception('Method '.$controller_method.' of class '.$controller_class.' does not exist.');
         }
 

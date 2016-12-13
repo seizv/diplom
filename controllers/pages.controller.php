@@ -41,16 +41,25 @@ class PagesController extends Controller{
     }
 
     public function admin_delete_category(){
-        $this->data['flower'] = $this->model->getCategoryList();
+        $this->data['flower'] = $this->model->getAllListCategoryCount();
         $params = App::getRouter()->getParams();
+
         if ( isset($params[0]) ){
-            $result = $this->model->deleteCategory($params[0]);
-            if ( $result ){
-                Session::setFlash('Category was deleted.');
-                Router::redirect('/admin/pages/delete_category/');
-            } else {
-                Session::setFlash('Error. Category used in another table');
+            foreach ($this->data['flower'] as $item){
+                if ( $item['id_category'] == $params[0] && $item['count'] < 1){
+                    $result = $this->model->deleteCategory($params[0]);
+                    if ( $result ){
+                        Session::setFlash('Category was deleted.');
+                        Router::redirect('/admin/pages/delete_category/');
+                    } else {
+                        Session::setFlash('Error.');
+                    }
+
+                } else{
+                    Session::setFlash('Error. Category used in another table');
+                }
             }
+
         }
     }
 

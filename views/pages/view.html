@@ -1,3 +1,9 @@
+<?php if (!isset($data['flower']) && ENV == 'production'){
+    include_once('404.html');
+    exit;
+}
+?>
+
 <h3><?=mb_ucfirst(__($data['flower'][0]['category'], $data['flower'][0]['category']))?></h3>
 
 <div class="row">

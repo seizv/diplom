@@ -1,7 +1,5 @@
 <?php
 
-ini_set('display_errors','Off');
-
 if (!function_exists('mb_ucfirst')) {
     function mb_ucfirst($str, $encoding = "UTF-8", $lower_str_end = false) {
       $first_letter = mb_strtoupper(mb_substr($str, 0, 1, $encoding), $encoding);
@@ -18,11 +16,15 @@ if (!function_exists('mb_ucfirst')) {
   }
 
 
-
 define('DS', DIRECTORY_SEPARATOR);
 define('ROOT', dirname(dirname(__FILE__)));
 define('VIEWS_PATH', ROOT.DS.'views');
 define('PAGES_PATH', VIEWS_PATH.DS.'pages');
+define('ENV', 'production');
+
+if (ENV == 'production'){
+    ini_set('display_errors','Off');
+}
 
 require_once(ROOT.DS.'lib'.DS.'init.php');
 

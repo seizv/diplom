@@ -3,6 +3,7 @@
     <tr>
         <td>#id</td>
         <td>Category</td>
+        <td>Count</td>
         <td>Delete</td>
     </tr>
 
@@ -11,7 +12,8 @@
     <?php foreach ($data['flower'] as $item) { ?>
     <tr>
         <td><?=$item['id_category']?></td>
-        <td><?=mb_ucfirst($item['category_name'])?></td>
+        <td><?=mb_ucfirst($item['category'])?></td>
+        <td><?=$item['count']?></td>
         <td><a href="/admin/pages/delete_category/<?=$item['id_category']?>"><button class="btn btn-sm btn-danger">Delete</button></a></td>
     </tr>
     <?php } ?>

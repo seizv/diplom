@@ -14,6 +14,10 @@ function __autoload($class_name){
     } elseif ( file_exists($model_path) ){
         require_once($model_path);
     } else {
+        if (ENV == 'production'){
+            include_once("404.html");
+            exit;
+        }
         throw new Exception('Failed to include class: '.$class_name);
     }
 }

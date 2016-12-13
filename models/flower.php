@@ -12,6 +12,18 @@ class Flower extends Model{
         return $this->db->query($sql);
     }
 
+
+    public function getAllListCategoryCount(){
+        $sql = "
+                SELECT c.`id_category` ,`category_name` AS 'category', COUNT(f.`id_category`) as `count` 
+                FROM flowers AS f
+                RIGHT JOIN category AS c ON f.`id_category`=c.`id_category`
+                GROUP BY c.`id_category`  
+                ORDER BY `category` ASC
+              ";
+        return $this->db->query($sql);
+    }
+
     public function getListCategoryFoto(){
         $sql = "
                 SELECT  `category_name` AS 'category', `foto`
