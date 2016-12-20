@@ -20,8 +20,10 @@ class DB{
         $result = $this->connection->query($sql);
 
         if ( mysqli_error($this->connection) ){
-            return false;
-            //throw new Exception(mysqli_error($this->connection));
+            if (ENV == 'production') {
+                return false;
+            }
+            throw new Exception(mysqli_error($this->connection));
         }
 
         if ( is_bool($result) ){

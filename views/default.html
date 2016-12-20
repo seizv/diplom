@@ -22,7 +22,7 @@
     <header>
         <div class="row">
             <div class="col-md-6">
-            <a href="/<?= App::getRouter()->getLanguage()?>/"><img src="/webroot/img/logo.png" alt="Лого"></a>
+            <a href="/"><img src="/webroot/img/logo.png" alt="Лого"></a>
             </div>
             <div class="col-md-6" align="right">THE COMPANY NAME
                 <br>8901 Marmora Road,
@@ -67,7 +67,7 @@
     </nav>
 
     <div class="content">
-        <div class="row <?php if( App::getRouter()->getAction() != 'index' ) {?>hidden<?php }?>"">
+        <div class="hidden-sm row <?php if( App::getRouter()->getAction() != 'index' ) {?>hidden<?php }?>"">
             <div class="col-md-4 text-center"><img src="/webroot/img/slide1.png" alt="фото 1" class="slide"></a></div>
             <div class="col-md-4 text-center"><img src="/webroot/img/slide2.png" alt="фото 2" class="slide"></a></div>
             <div class="col-md-4 text-center"><img src="/webroot/img/slide3.png" alt="фото 3" class="slide"></a></div>
@@ -75,16 +75,21 @@
         <div class="row">
             <div class="col-md-3">
 
-                <div class="blok1">
+                <div class="block1">
                     <?php include_once(PAGES_PATH."/sidebar1.html"); ?>
                 </div>
 
-                <div class="blok2">
+                <div class="block2">
                    <?php include_once(PAGES_PATH."/sidebar2.html"); ?>
                 </div>
 
-                <div class="blok3">
+                <div class="block3">
                     <?php //include_once(VIEWS_PATH."/users/admin_login.html"); ?>
+                    <!-- загрузка стартового модального окна (если надо :))-->
+                    <?php if( !App::getRouter()->getUri() ) {
+                        include_once(PAGES_PATH . "/load_modal_start_page.html");
+                    }?>
+                    <!-- конец загрузки стартового модального окна -->
                 </div>
 
             </div>

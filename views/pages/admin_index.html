@@ -6,30 +6,42 @@
 </p>
 
 </div>
-
-
-
 <div class="row">
-<?php
-//todo: every 6 page_data add new <div class="row">
-$i = 0;
-foreach($data['flower'] as $page_data) { ?>
-    <?= ($i % 6 == 0 or $i == 0) ? '<div class="row">' : null?>
     <div class="col-md-2">
-        <div class="thumbnail">
-            <img src="<?=$page_data['foto']?>" alt="Фото_<?=$page_data['id']?>">
-            <div class="caption">
-                <h4><?=ucfirst($page_data["category"])?> <?=$page_data['name']?></h4>
-                <p>Размер: <?=$page_data['size']?> см</p>
-                <p>Цена: <?=$page_data['price']?> грн</p>
-                <p><?= $text = ($page_data['is_available'] == 1) ? 'Есть в наличии' : 'Нет в наличии'?></p>
-                <a href="/admin/pages/edit/<?=$page_data['id']?>" class="btn btn-sm btn-primary" role="button"> Edit </a>
-                    <a href="/admin/pages/delete/<?=$page_data['id']?>" onclick="return confirmDelete();" class="btn btn-sm btn-warning" role="button">Delete</a>
-            </div>
+        <div class="list-group">
+            <h3><?=mb_ucfirst(__('category', 'category'))?>:</h3>
+            <?php foreach ($data['flower_count'] as $item){ ?>
+                <a href="/<?= App::getRouter()->getRoute()?>/pages/flower/<?=$item['category']?>" class="list-group-item list-group-item-warning <?php if( App::getRouter()->getUri() == App::getRouter()->getLanguage().'/pages/flower/'. $item['category'] ) {?>active<?php }?>">
+                    <span class="badge"><?=$item['count']?></span><?=mb_ucfirst(__($item['category'], $item['category']))?></a>
+            <?php } ?>
         </div>
     </div>
-    <?php $i++;
-    echo ($i % 6 == 0) ? '</div>'. "\n" : null;
-    ?>
-<?php } ?>
+    <div class="col-md-10">
+        <div class="row">
+
+        <?php
+        //todo: every 6 page_data add new <div class="row">
+        $i = 0;
+        foreach($data['flower'] as $page_data) { ?>
+            <?= ($i % 4 == 0 or $i == 0) ? '<div class="row">' : null?>
+            <div class="col-md-3">
+                <div class="thumbnail">
+                    <img src="<?=$page_data['foto']?>" alt="Фото_<?=$page_data['id']?>">
+                    <div class="caption">
+                        <h4><?=ucfirst($page_data["category"])?> <?=$page_data['name']?></h4>
+                        <p>Размер: <?=$page_data['size']?> см</p>
+                        <p>Цена: <?=$page_data['price']?> грн</p>
+                        <p><?= $text = ($page_data['is_available'] == 1) ? 'Есть в наличии' : 'Нет в наличии'?></p>
+                        <a href="/admin/pages/edit/<?=$page_data['id']?>" class="btn btn-sm btn-primary" role="button"> Edit </a>
+                            <a href="/admin/pages/delete/<?=$page_data['id']?>" onclick="return confirmDelete();" class="btn btn-sm btn-warning" role="button">Delete</a>
+                    </div>
+                </div>
+            </div>
+            <?php $i++;
+            echo ($i % 4 == 0) ? '</div>'. "\n" : null;
+            ?>
+        <?php } ?>
+        </div>
+    </div>
 </div>
+

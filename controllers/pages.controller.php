@@ -23,6 +23,17 @@ class PagesController extends Controller{
 
     public function admin_index(){
         $this->data['flower'] = $this->model->getAll();
+        $this->data['flower_count'] = $this->model->getAllListCategoryCount();
+    }
+
+    public function admin_flower(){
+        $params = App::getRouter()->getParams();
+
+        if ( isset($params[0]) ){
+            $category = strtolower($params[0]);
+            $this->data['flower'] = $this->model->getByCategory($category);
+            $this->data['flower_count'] = $this->model->getAllListCategoryCount();
+        }
     }
 
     public function admin_category_add(){
